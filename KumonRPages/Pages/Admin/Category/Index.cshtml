@@ -1,0 +1,55 @@
+﻿@page
+@model KumonRPages.Pages.Admin.Category.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h1>Index Category</h1>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model.Category)
+            {
+            <tr>
+                <td> @contact.CategoryID  </td>
+                <td>@contact.Name</td>
+                @*<td>
+            <a asp-page="./Edit" asp-route-id="@contact.CategoryID">Edit</a> |
+            <button type="submit" asp-page-handler="delete"
+                    asp-route-id="@contact.CategoryID">
+                delete
+            </button>
+        </td>*@
+                <td><partial name="_ButtonPartial" model="@contact.CategoryID" /></td>
+                <button asp-page-handler="Delete" asp-route-id="@contact.CategoryID" class="btn btn-danger btn-sm">Delete</button>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-page="Create">Create New</a>
+</form>
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}

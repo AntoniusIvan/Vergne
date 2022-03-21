@@ -1,0 +1,106 @@
+﻿@page
+@model KumonRPages.Pages.Admin.Item.IndexModel
+
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Item List</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create New Item</a>
+    </div>
+
+
+    <form method="post">
+        <div class="row">
+            <div class="col-3">
+                <input type="number" class="form-control" name="lowAmount" />
+            </div>
+            <div class="col-3">
+                <input type="number" class="form-control" name="largeAmount" />
+            </div>
+            <div class="col-3">
+                <input type="submit" value="Search" class="btn btn-success" />
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ItemID</th>
+                    <th>Code</th>
+                    <th>IsAvailableInput</th>
+                    <th>UnitPrice1</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>ItemID</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contact in Model.items)
+                {
+                <tr>
+                    <td>@contact.ItemID</td>
+                    <td>@contact.Code</td>
+                    <td>@contact.IsAvailableInput</td>
+                    <td>@contact.UnitPrice1</td>
+                    <td>@contact.Category.Name</td>
+                    <td>@contact.Brand.Name</td>
+                    <td>@contact.ItemID</td>
+                    <td><partial name="_ButtonPartial" model="@contact.ItemID" /></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+
+    <div class="col-12 border p-3">
+        <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>IsAvailable</th>
+                    <th>UnitPrice1</th>
+                    <th>ItemID</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>"
+
+@section Scripts{
+    <script src="~/js/item.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        } );
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}
+
+

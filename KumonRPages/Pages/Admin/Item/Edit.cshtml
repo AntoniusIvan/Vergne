@@ -1,0 +1,145 @@
+﻿@page
+@model KumonRPages.Pages.Admin.Item.EditModel
+
+<br />
+<h2 class="text-info">Edit New Item</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="item.ItemID" />
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.Code"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.Code" class="form-control" />
+            </div>
+            <span asp-validation-for="item.Code" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.Barcode"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.Barcode" class="form-control" />
+            </div>
+            <span asp-validation-for="item.Barcode" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="item.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.Unit1"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.Unit1" class="form-control" />
+            </div>
+            <span asp-validation-for="item.Unit1" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.GRIR"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.GRIR" class="form-control" />
+            </div>
+            <span asp-validation-for="item.GRIR" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.IsActiveInput"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.IsActiveInput" class="" type="checkbox" />
+            </div>
+            <span asp-validation-for="item.IsActiveInput" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.UnitPrice1"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.UnitPrice1" class="form-control" asp-is-invariant="true" />
+            </div>
+            <span asp-validation-for="item.UnitPrice1" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="image"></label>
+            </div>
+            <div class="col-6">
+                @*<input asp-for="Item.Image" class="form-control" type="file" />*@
+                <input asp-for="image" type="file" />
+            </div>
+            <span asp-validation-for="image" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.CategoryID"></label>
+            </div>
+            <div class="col-6">
+                @*<input asp-for="item.CategoryID" class="form-control" />*@
+                <select asp-for="item.CategoryID" asp-items="ViewBag.CategoryID" class="form-control"></select>
+            </div>
+            <span asp-validation-for="item.CategoryID" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.BrandID"></label>
+            </div>
+            <div class="col-6">
+                @*<input asp-for="item.BrandID" class="form-control" />*@
+                <select asp-for="item.BrandID" asp-items="ViewBag.BrandID" class="form-control"></select>
+            </div>
+            <span asp-validation-for="item.BrandID" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.Notes"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.Notes" class="form-control" />
+            </div>
+            <span asp-validation-for="item.Notes" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.ModifiedDate"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.ModifiedDate" class="form-control" />
+            </div>
+            <span asp-validation-for="item.ModifiedDate" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="item.Length"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="item.Length" class="form-control" />
+            </div>
+            <span asp-validation-for="item.Length" class="text-danger"></span>
+        </div>@**@
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Update" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

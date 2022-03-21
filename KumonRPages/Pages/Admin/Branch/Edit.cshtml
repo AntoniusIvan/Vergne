@@ -1,0 +1,88 @@
+﻿@page
+@model KumonRPages.Pages.Admin.Branch.EditModel
+
+<br />
+<h2 class="text-info">Edit New Branch</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <input type="hidden" asp-for="branch.BranchID" />
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="branch.Code"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="branch.Code" class="form-control" />
+            </div>
+            <span asp-validation-for="branch.Code" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="branch.Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="branch.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="branch.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="branch.Address1"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="branch.Address1" class="form-control" />
+            </div>
+            <span asp-validation-for="branch.Address1" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="branch.Address2"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="branch.Address2" class="form-control" />
+            </div>
+            <span asp-validation-for="branch.Address2" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="branch.Address3"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="branch.Address3" class="form-control" />
+            </div>
+            <span asp-validation-for="branch.Address3" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="branch.Position"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="branch.Position" class="form-control" />
+            </div>
+            <span asp-validation-for="branch.Position" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="branch.PIC"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="branch.PIC" class="form-control" />
+            </div>
+            <span asp-validation-for="branch.PIC" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Update" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
